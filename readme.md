@@ -1,16 +1,16 @@
 # 📊 NumPy Stock Risk & Return Analyzer
 
-This project focuses on building a **stock market data analysis pipeline using pure NumPy**, starting from **raw, messy CSV data** and performing **professional-grade data cleaning** before analysis.
+This project focuses on building a **stock market data analysis pipeline using pure NumPy**, starting from **raw, messy CSV data** and progressing through **data cleaning and time-series return analysis**.
 
-The goal is to strengthen **NumPy fundamentals** by avoiding Pandas and working close to how data is handled internally.
+The objective is to strengthen **core NumPy skills** by avoiding Pandas and working directly with arrays, boolean masking, and vectorized operations.
 
 ---
 
-## 🚀 Project Objective
-- Work with **raw real-world–like financial data**
-- Perform **data loading and cleaning using NumPy only**
-- Understand and apply **boolean masking, vectorization, and array logic**
-- Build a clean foundation for future **risk & return analysis**
+## 🚀 Project Objectives
+- Work with **real-world–like raw financial data**
+- Perform **data loading, cleaning, and analysis using NumPy only**
+- Apply **boolean masking, slicing, and vectorization**
+- Build a solid foundation for **risk & return analysis**
 
 ---
 
@@ -18,7 +18,9 @@ The goal is to strengthen **NumPy fundamentals** by avoiding Pandas and working 
 numpy-stock-risk-analyzer/
 │
 ├── data_cleaning.py
+├── returns_analysis.py
 ├── raw_stock_prices.csv
+├── clean_prices.npy
 ├── .gitignore
 └── README.md
 
@@ -32,12 +34,12 @@ numpy-stock-risk-analyzer/
 - Each **row** represents one trading day  
 - Each **column** represents a stock  
 
-| Column | Description |
-|------|------------|
-| Stock_A | Closing price of Stock A |
-| Stock_B | Closing price of Stock B |
-| Stock_C | Closing price of Stock C |
-| Stock_D | Closing price of Stock D |
+| Column   | Description                  |
+|----------|------------------------------|
+| Stock_A  | Closing price of Stock A     |
+| Stock_B  | Closing price of Stock B     |
+| Stock_C  | Closing price of Stock C     |
+| Stock_D  | Closing price of Stock D     |
 
 ### Raw data intentionally contains:
 - Missing values
@@ -54,26 +56,39 @@ This simulates **real-world dirty financial data**.
 ### 1️⃣ Raw Data Loading
 - Loaded CSV using `numpy.genfromtxt`
 - Preserved missing values and formatting issues
-- Verified array shape and data type
+- Verified array shape and data types
+
+---
 
 ### 2️⃣ Data Cleaning Strategy
 - Defined a valid stock price as **price > 0**
-- Chose **row-wise cleaning** for time-series integrity
-- Decided to drop rows with missing or invalid prices
+- Applied **row-wise cleaning** to preserve time-series integrity
+- Dropped rows containing missing or invalid prices
+
+---
 
 ### 3️⃣ Data Cleaning Implementation
 Implemented a full cleaning pipeline using NumPy:
 - Removed extra whitespace using `np.char.strip`
 - Detected missing values using boolean masking
-- Dropped rows containing missing values
+- Dropped rows with missing values
 - Safely converted string data to `float`
-- Detected and removed rows with zero or negative prices
-- Performed sanity checks on cleaned data
+- Removed rows with zero or negative prices
+- Saved cleaned data as `clean_prices.npy` for reuse
 
-### ✔ Final Cleaned Data
+**Final cleaned data:**
 - Shape: `(5, 4)`
 - Minimum price: `> 0`
-- Data is now safe for numerical analysis
+- Data ready for numerical analysis
+
+---
+
+### 4️⃣ Daily Returns Calculation
+- Loaded cleaned prices from `clean_prices.npy`
+- Correctly aligned time-series data using slicing
+- Calculated **daily returns** using vectorized NumPy operations
+- Performed sanity checks (min/max values, NaN, Inf)
+- Computed **mean daily return per stock**
 
 ---
 
@@ -83,18 +98,19 @@ Implemented a full cleaning pipeline using NumPy:
 - Boolean masking
 - `np.any` and `np.all` with `axis`
 - Safe type conversion using `astype(float)`
-- Array slicing and validation
+- Time-series slicing
+- Vectorized arithmetic operations
 
 ---
 
 ## ⏭️ Next Steps
-- Calculate daily returns using NumPy
-- Analyze volatility (risk)
-- Study correlations between stocks
-- Extract analytical insights
+- Calculate volatility (risk) using standard deviation
+- Analyze correlations between stocks
+- Perform basic portfolio-level analysis
+- Extract and interpret financial insights
 
 ---
 
 ## 📌 Note
-The data loading and cleaning logic is currently implemented in a **single script** for clarity during learning.  
-The project will be modularized into separate files as analysis features are added.
+During the learning phase, data loading, cleaning, and analysis logic are kept in **simple, readable scripts**.  
+The project will be modularized further as additional analytical components are added.
