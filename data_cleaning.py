@@ -32,3 +32,6 @@ clean_prices = numeric_data[valid_price_rows]
 print(clean_prices.shape)
 print(clean_prices.min() > 0)
 print(clean_prices)
+
+np.save("clean_prices.npy", clean_prices)
+print("Clean prices saved successfully.")
