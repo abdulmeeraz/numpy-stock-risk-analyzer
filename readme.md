@@ -1,8 +1,8 @@
 # 📊 NumPy Stock Risk & Return Analyzer
 
-This project focuses on building a **stock market data analysis pipeline using pure NumPy**, starting from **raw, messy CSV data** and progressing through **data cleaning and time-series return analysis**.
+This project demonstrates an **end-to-end stock market analysis pipeline built using pure NumPy**, starting from **raw, messy CSV data** and progressing through **data cleaning, return calculation, risk analysis, and correlation-based portfolio insights**.
 
-The objective is to strengthen **core NumPy skills** by avoiding Pandas and working directly with arrays, boolean masking, and vectorized operations.
+The primary goal is to strengthen **core NumPy fundamentals** by avoiding Pandas and working directly with arrays, boolean masking, slicing, and vectorized computations.
 
 ---
 
@@ -10,20 +10,20 @@ The objective is to strengthen **core NumPy skills** by avoiding Pandas and work
 - Work with **real-world–like raw financial data**
 - Perform **data loading, cleaning, and analysis using NumPy only**
 - Apply **boolean masking, slicing, and vectorization**
-- Build a solid foundation for **risk & return analysis**
+- Build a strong foundation for **risk & return analysis**
+- Develop analytical thinking for **portfolio-level insights**
 
 ---
 
-## 📂 Project Structure (Current)
+## 📂 Project Structure
 numpy-stock-risk-analyzer/
 │
-├── data_cleaning.py
-├── returns_analysis.py
-├── raw_stock_prices.csv
-├── clean_prices.npy
+├── data_cleaning.py # Raw data loading & cleaning pipeline
+├── returns_analysis.py # Returns, risk, and correlation analysis
+├── raw_stock_prices.csv # Raw input dataset
+├── clean_prices.npy # Cleaned NumPy array (persisted output)
 ├── .gitignore
 └── README.md
-
 
 ---
 
@@ -41,20 +41,20 @@ numpy-stock-risk-analyzer/
 | Stock_C  | Closing price of Stock C     |
 | Stock_D  | Closing price of Stock D     |
 
-### Raw data intentionally contains:
+### Raw data intentionally includes:
 - Missing values
 - Extra whitespace
 - Zero prices
 - Negative prices
 
-This simulates **real-world dirty financial data**.
+This simulates **real-world dirty financial data** commonly encountered in practice.
 
 ---
 
-## ✅ Progress Completed So Far
+## ✅ Work Completed
 
 ### 1️⃣ Raw Data Loading
-- Loaded CSV using `numpy.genfromtxt`
+- Loaded CSV data using `numpy.genfromtxt`
 - Preserved missing values and formatting issues
 - Verified array shape and data types
 
@@ -74,25 +74,28 @@ Implemented a full cleaning pipeline using NumPy:
 - Dropped rows with missing values
 - Safely converted string data to `float`
 - Removed rows with zero or negative prices
-- Saved cleaned data as `clean_prices.npy` for reuse
+- Persisted cleaned data as `clean_prices.npy` for reuse
 
-**Final cleaned data:**
+**Final cleaned dataset:**
 - Shape: `(5, 4)`
 - Minimum price: `> 0`
-- Data ready for numerical analysis
+- Data is safe for numerical analysis
 
 ---
 
-### 4️⃣ Daily Returns Calculation
+### 4️⃣ Daily Returns & Risk Analysis
 - Loaded cleaned prices from `clean_prices.npy`
 - Correctly aligned time-series data using slicing
 - Calculated **daily returns** using vectorized NumPy operations
 - Performed sanity checks (min/max values, NaN, Inf)
-- Computed **mean daily return per stock**
+- Computed:
+  - Mean daily return per stock
+  - Volatility (standard deviation of returns)
+  - Risk-adjusted return (return ÷ volatility)
 
 ---
 
-## 🧠 NumPy Concepts Used
+## 🧠 NumPy Concepts Applied
 - `np.genfromtxt`
 - Vectorized string operations (`np.char.strip`)
 - Boolean masking
@@ -100,17 +103,30 @@ Implemented a full cleaning pipeline using NumPy:
 - Safe type conversion using `astype(float)`
 - Time-series slicing
 - Vectorized arithmetic operations
+- Correlation analysis using `np.corrcoef`
 
 ---
 
-## ⏭️ Next Steps
-- Calculate volatility (risk) using standard deviation
-- Analyze correlations between stocks
-- Perform basic portfolio-level analysis
-- Extract and interpret financial insights
+## 📌 Portfolio Insights Summary
+- **Stock A** is the most volatile and carries the highest risk.
+- **Stock C** is the most stable, with the lowest volatility.
+- **Stock C** provides the best **risk-adjusted return**.
+- **Stock B and Stock D** are highly correlated and tend to move together.
+- **Low-correlated pairs**, such as Stock A and Stock B, improve diversification.
+
+**Overall conclusion:**  
+> Stock C emerges as the most balanced investment, offering stable performance, low risk, and strong risk-adjusted returns.
+
+---
+**This project successfully demonstrates:**
+- Real-world data cleaning using NumPy
+- Time-series return calculation
+- Risk and volatility measurement
+- Risk–return tradeoff analysis
+- Correlation-based diversification insights
 
 ---
 
 ## 📌 Note
-During the learning phase, data loading, cleaning, and analysis logic are kept in **simple, readable scripts**.  
-The project will be modularized further as additional analytical components are added.
+During the learning phase, data loading, cleaning, and analysis logic are intentionally kept in **simple, readable scripts**.  
+The project is complete and serves as a solid foundation for further financial analytics and portfolio analysis.
