@@ -44,5 +44,18 @@ print("\nAverage daily return per stock:\n", avg_daily_returns)
 volatility = np.std(daily_returns,axis=0) 
 print("\nVolatility of daily return per stock:\n", volatility)
 
+# ---------------------
+# risk adjusted returns
+# ---------------------
+risk_adjusted_return = avg_daily_returns / volatility
+print("risk adjusted returns :\n",risk_adjusted_return)
+
+# --------------------
+# Correlation Analysis
+# --------------------
+correlation_matrix = np.corrcoef(daily_returns.T)
+print("Correlation Analysis :\n",correlation_matrix)
+
+
 
 
