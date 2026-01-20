@@ -38,5 +38,11 @@ print("Contains Inf:", np.isinf(daily_returns).any())
 avg_daily_returns = np.mean(daily_returns, axis=0)
 print("\nAverage daily return per stock:\n", avg_daily_returns)
 
+# ------------------------------------
+# Volatility of daily return per stock
+# ------------------------------------
+volatility = np.std(daily_returns,axis=0) 
+print("\nVolatility of daily return per stock:\n", volatility)
+
 
 
