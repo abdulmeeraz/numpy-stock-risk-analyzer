@@ -31,6 +31,7 @@ numpy-stock-risk-analyzer/
 
 **File:** `raw_stock_prices.csv`
 
+- Dataset size: **~2000 trading days × 4 stocks** (with headers)
 - Each **row** represents one trading day  
 - Each **column** represents a stock  
 
@@ -77,7 +78,7 @@ Implemented a full cleaning pipeline using NumPy:
 - Persisted cleaned data as `clean_prices.npy` for reuse
 
 **Final cleaned dataset:**
-- Shape: `(5, 4)`
+- Shape: **slightly fewer than 2000 rows × 4 stocks** (after cleaning)
 - Minimum price: `> 0`
 - Data is safe for numerical analysis
 
@@ -92,6 +93,13 @@ Implemented a full cleaning pipeline using NumPy:
   - Mean daily return per stock
   - Volatility (standard deviation of returns)
   - Risk-adjusted return (return ÷ volatility)
+
+---
+
+### 5️⃣ Correlation & Diversification Analysis
+- Computed correlation matrix using **daily returns**
+- Identified highly correlated stock pairs
+- Evaluated diversification benefits using low-correlation assets
 
 ---
 
@@ -118,12 +126,17 @@ Implemented a full cleaning pipeline using NumPy:
 > Stock C emerges as the most balanced investment, offering stable performance, low risk, and strong risk-adjusted returns.
 
 ---
-**This project successfully demonstrates:**
+
+## 🏁 Project Status
+✅ **Completed**
+
+This project successfully demonstrates:
 - Real-world data cleaning using NumPy
 - Time-series return calculation
 - Risk and volatility measurement
 - Risk–return tradeoff analysis
 - Correlation-based diversification insights
+- Scalability on large time-series datasets (~2000 rows)
 
 ---
 
